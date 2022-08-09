@@ -1,0 +1,3 @@
+/home/jumana/Documents/HandPlot/CMakeFiles/HandPlot.dir
+/home/jumana/Documents/HandPlot/CMakeFiles/edit_cache.dir
+/home/jumana/Documents/HandPlot/CMakeFiles/rebuild_cache.dir

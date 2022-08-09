@@ -1,0 +1,1 @@
+/usr/bin/c++ -D__GLN__ -lft4222 -Wl,-rpath,/usr/local/lib -Wall -Wfatal-errors -Wno-missing-braces -g -O3 -Wno-unused-result -Wno-unknown-pragmas -march=native -DGL3_PROTOTYPES -DGL_GLEXT_PROTOTYPES -DMORPH_FONTS_DIR="\"/home/jumana/Documents/HandPlot/morphologica-1.0/fonts\"" -rdynamic CMakeFiles/Driver.dir/morphologica-1.0/dongle/driver.cpp.o -o Driver 
