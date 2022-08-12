@@ -53,6 +53,8 @@
 //! The default z=0 position for VisualModels
 #define Z_DEFAULT -5
 
+//#define PROFILE_RENDER
+
 #ifdef PROFILE_RENDER
 #include <chrono>
 using namespace std::chrono;

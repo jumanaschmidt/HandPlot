@@ -384,4 +384,6 @@ CMakeFiles/HandPlot.dir/HandPlot.cpp.o: \
  /home/jumana/Documents/HandPlot/morphologica-1.0/morph/histo.h \
  /home/jumana/Documents/HandPlot/morphologica-1.0/morph/vVector.h \
  /usr/include/c++/11/deque /usr/include/c++/11/bits/stl_deque.h \
- /usr/include/c++/11/bits/deque.tcc
+ /usr/include/c++/11/bits/deque.tcc \
+ /home/jumana/Documents/HandPlot/ftd2xx.h /usr/local/include/WinTypes.h \
+ /home/jumana/Documents/HandPlot/LibFT4222.h

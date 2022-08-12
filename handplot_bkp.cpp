@@ -224,43 +224,29 @@ int main (int argc, char** argv)
 	float degrees[6] = { 0 };
 
 
-	int rtn = -1;
-
 	morph::Visual v(1024, 768, "Graph", {-0.8,-0.8}, {.1,.1,.1}, 2.0f, 0.01f);
-	v.zNear = 0.001;
-	v.showCoordArrows = true;
-	v.backgroundWhite();
-	v.lightingEffects();
-
-	try {
-	 morph::vVector<float> time(1,0);
-        morph::vVector<float> position(1,0);
+	
+	morph::vVector<float> x;
+        morph::vVector<float> y;
 	morph::GraphVisual<float>* gv = new morph::GraphVisual<float> (v.shaderprog, v.tshaderprog, {0,0,0});
 
-	gv->setsize (1.33, 1);			// Optionally change the physical size of the graph and range of the axes
-	// Optionally change the range of the axes
-	//gv->setlimits (-1, 1, -1, 1);
-
-	// Set the graphing policy
-	//gv->policy = morph::stylepolicy::lines; // markers, lines, both, allcolour
-	//gv->axisstyle = morph::axisstyle::twinax;
-	// We 'prepare' two datasets, but won't fill them with data yet. However, we do give the data legend label here.
-	//gv->prepdata ("Third power", morph::axisside::left);
-	gv->xlabel = "Time";
-	gv->ylabel = "Position";
-	//gv->setdata(time, position, "HandPlot", morph::axisside::left);
-	gv->prepdata ("Plot", morph::axisside::left);
-	//gv->prepdata ("Position", morph::axisside::right);
+	gv->setsize(2,2);
+	gv->setlimits(-10,10,-10,10);
+	v.setSceneTransXY(-1, -1);
+	x.linspace (-morph::mathconst<double>::pi, morph::mathconst<double>::pi, 100);
+	y.linspace (-morph::mathconst<double>::pi, morph::mathconst<double>::pi, 100);
+	
+	gv->setdata (x, y);
+	
 	gv->finalize();
 
-	// Add the GraphVisual (as a VisualModel*)
 	v.addVisualModel (gv);
 
 	size_t idx = 0;
 	v.render();
 	auto start = std::chrono::high_resolution_clock::now();
 	while (v.readyToFinish == false) {
-	    glfwWaitEventsTimeout (0.018);
+	    glfwWaitEventsTimeout (0.01667);
 	    auto finish = std::chrono::high_resolution_clock::now();
 		std::chrono::duration<double> t = finish - start;
 		FingerWave(degrees, txsize, rxsize, txactualsize, t.count());
@@ -274,27 +260,22 @@ int main (int argc, char** argv)
 			degrees[ch] = ((float)posdata.vals[ch * 2]) * 150.f / 32767.f;
 		}
 		
-		float x = t.count();
-		float y = degrees[3];
-		time[idx] = t.count();
-		position[idx] = degrees[3];
+		//float x = t.count();
+		//float y = degrees[3];
+		x[idx] = t.count();
+		y[idx] = degrees[3];
 		//printf("idx: %d \n", idx);
 		//printf("sec: %f \n", time[idx]);
 		//printf("pos: %f \n", position[idx]);
-		gv->append (x, y, 0);
+		//gv->append (x[idx], y[idx], 0);
 		//gv->completeAppend();
-		//printf("%f", gv->graphDataCoords.size());
-		gv->update(time, position, idx);
+		printf("%f \n", gv->graphDataCoords.size());
+		gv->update(x, y, 0);
 		
-		//glfwPollEvents();
                 v.render();
                 ++idx;
 	}
 
-	} catch (const std::exception& e) {
-	std::cerr << "Caught exception: " << e.what() << std::endl;
-	rtn = -1;
-	}
 
-	return rtn;
+	return 0;
 }

@@ -466,8 +466,13 @@ CMakeFiles/HandPlot.dir/HandPlot.cpp.o: HandPlot.cpp \
   morphologica-1.0/morph/vVector.h \
   /usr/include/c++/11/deque \
   /usr/include/c++/11/bits/stl_deque.h \
-  /usr/include/c++/11/bits/deque.tcc
+  /usr/include/c++/11/bits/deque.tcc \
+  ftd2xx.h \
+  /usr/local/include/WinTypes.h \
+  LibFT4222.h
 
+
+LibFT4222.h:
 
 /usr/include/c++/11/bits/deque.tcc:
 
@@ -1079,6 +1084,8 @@ morphologica-1.0/morph/VisualResources.h:
 
 /usr/include/c++/11/tr1/bessel_function.tcc:
 
+ftd2xx.h:
+
 /usr/include/c++/11/codecvt:
 
 /usr/include/string.h:
@@ -1368,6 +1375,8 @@ morphologica-1.0/morph/VisualCommon.h:
 /usr/include/c++/11/istream:
 
 /usr/include/c++/11/bits/istream.tcc:
+
+/usr/local/include/WinTypes.h:
 
 /usr/include/c++/11/sstream:
 
