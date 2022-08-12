@@ -17,6 +17,7 @@ int main()
 	v.setSceneTransXY(-1, -1);
 	x.linspace (-morph::mathconst<double>::pi, morph::mathconst<double>::pi, 100);
 	y.linspace (-morph::mathconst<double>::pi, morph::mathconst<double>::pi, 100);
+
 	double dx = 0.;		
 	gv->setdata (x, y);
 	gv->finalize();
@@ -26,10 +27,16 @@ int main()
 	while (v.readyToFinish == false) {
 		dx += 0.01667;
 		glfwWaitEventsTimeout (0.01667); // 16.67 ms ~ 60 Hz
-		for(int i = 0; i < 100; i++)
-		{
-			y[i] = sin(x[i]+dx);
+		
+		
+		double p = sin(dx*3.0);
+		
+		
+		
+		for(int i=0; i<y.size()-1; i++){
+			y[i] = y[i+1];
 		}
+		y[y.size()-1] = p;
 		gv->update (x, y, 0);
 		v.render();
 	}
